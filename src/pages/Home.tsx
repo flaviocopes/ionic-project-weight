@@ -11,6 +11,8 @@ import {
   IonTitle,
   IonToolbar,
   useIonViewWillEnter,
+  IonButtons,
+  IonButton,
 } from '@ionic/react'
 import './Home.css'
 
@@ -33,6 +35,9 @@ const Home: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>Measurements</IonTitle>
+          <IonButtons slot='end'>
+            <IonButton routerLink={`/add`}>Add</IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -48,7 +53,12 @@ const Home: React.FC = () => {
 
         <IonList>
           {measures.map((m) => (
-            <MeasureListItem key={m.id} measure={m} setMeasures={setMeasures} measures={measures} />
+            <MeasureListItem
+              key={m.id}
+              measure={m}
+              setMeasures={setMeasures}
+              measures={measures}
+            />
           ))}
         </IonList>
       </IonContent>
