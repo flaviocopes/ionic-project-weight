@@ -33,15 +33,14 @@ const MeasureListItem: React.FC<MeasureListItemProps> = ({ measure, setMeasures,
         </IonItemOption>
       </IonItemOptions>
       <IonItem detail={false}>
-        <div slot='start' className='dot dot-unread'></div>
+        <div slot='start' className=''></div>
         <IonLabel className='ion-text-wrap'>
           <h2>
-            {measure.fromName}
+            {measure.weight}
             <span className='date'>
               <IonNote>{measure.date}</IonNote>
             </span>
           </h2>
-          <h3>{measure.subject}</h3>
         </IonLabel>
       </IonItem>
     </IonItemSliding>
