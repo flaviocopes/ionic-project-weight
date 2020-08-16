@@ -16,13 +16,12 @@ import {
 } from '@ionic/react'
 import './Home.css'
 
-const Home: React.FC = () => {
-  const [measures, setMeasures] = useState<Measure[]>([])
+interface HomeProps {
+  measures: Array<Measure>,
+  setMeasures: Function
+}
 
-  useIonViewWillEnter(() => {
-    const msgs = getMeasures()
-    setMeasures(msgs)
-  })
+const Home: React.FC<HomeProps> = ({measures, setMeasures}) => {
 
   const refresh = (e: CustomEvent) => {
     setTimeout(() => {
