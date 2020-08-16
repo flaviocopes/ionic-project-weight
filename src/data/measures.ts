@@ -1,11 +1,11 @@
-export interface Message {
+export interface Measure {
   fromName: string;
   subject: string;
   date: string;
   id: number;
 }
 
-const messages: Message[] = [
+const measures: Measure[] = [
   {
     fromName: 'Matt Chorsey',
     subject: 'New event: Trip to Vegas',
@@ -57,6 +57,6 @@ const messages: Message[] = [
   }
 ];
 
-export const getMessages = () => messages;
+export const getMeasures = () => measures;
 
-export const getMessage = (id: number) => messages.find(m => m.id === id);
+export const getMeasure = (id: number) => measures.find(m => m.id === id);

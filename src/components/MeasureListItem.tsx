@@ -7,19 +7,18 @@ import {
   IonItemOptions,
   IonItemOption,
 } from '@ionic/react'
-import { Message } from '../data/messages'
-import './MessageListItem.css'
+import { Measure } from '../data/measures'
+import './MeasureListItem.css'
 
-interface MessageListItemProps {
-  message: Message,
-  setMessages: Function,
-  messages: Array<Message>
+interface MeasureListItemProps {
+  measure: Measure,
+  setMeasures: Function,
+  measures: Array<Measure>
 }
 
-const MessageListItem: React.FC<MessageListItemProps> = ({ message, setMessages, messages }) => {
-  const removeItem = (message: Message) => {
-    console.log(message)
-    setMessages(messages.filter(item => item.id !== message.id))
+const MeasureListItem: React.FC<MeasureListItemProps> = ({ measure, setMeasures, measures }) => {
+  const removeItem = (measure: Measure) => {
+    setMeasures(measures.filter(item => item.id !== measure.id))
   }
 
   return (
@@ -28,7 +27,7 @@ const MessageListItem: React.FC<MessageListItemProps> = ({ message, setMessages,
         <IonItemOption
           color='danger'
           expandable
-          onClick={() => removeItem(message)}
+          onClick={() => removeItem(measure)}
         >
           Delete
         </IonItemOption>
@@ -37,16 +36,16 @@ const MessageListItem: React.FC<MessageListItemProps> = ({ message, setMessages,
         <div slot='start' className='dot dot-unread'></div>
         <IonLabel className='ion-text-wrap'>
           <h2>
-            {message.fromName}
+            {measure.fromName}
             <span className='date'>
-              <IonNote>{message.date}</IonNote>
+              <IonNote>{measure.date}</IonNote>
             </span>
           </h2>
-          <h3>{message.subject}</h3>
+          <h3>{measure.subject}</h3>
         </IonLabel>
       </IonItem>
     </IonItemSliding>
   )
 }
 
-export default MessageListItem
+export default MeasureListItem

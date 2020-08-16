@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Message, getMessage } from '../data/messages';
+import { Measure, getMeasure } from '../data/measures';
 import {
   IonBackButton,
   IonButtons,
@@ -15,21 +15,21 @@ import {
 } from '@ionic/react';
 import { personCircle } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
-import './ViewMessage.css';
+import './ViewMeasure.css';
 
-interface ViewMessageProps extends RouteComponentProps<{ id: string; }> { }
+interface ViewMeasureProps extends RouteComponentProps<{ id: string; }> { }
 
-const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
+const ViewMeasure: React.FC<ViewMeasureProps> = ({ match }) => {
 
-  const [message, setMessage] = useState<Message>();
+  const [measure, setMeasure] = useState<Measure>();
 
   useIonViewWillEnter(() => {
-    const msg = getMessage(parseInt(match.params.id, 10));
-    setMessage(msg);
+    const msg = getMeasure(parseInt(match.params.id, 10));
+    setMeasure(msg);
   });
 
   return (
-    <IonPage id="view-message-page">
+    <IonPage id="view-measure-page">
       <IonHeader translucent>
         <IonToolbar>
           <IonButtons>
@@ -39,15 +39,15 @@ const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
       </IonHeader>
 
       <IonContent fullscreen>
-        {message ? (
+        {measure ? (
           <>
             <IonItem>
               <IonIcon icon={personCircle} color="primary"></IonIcon>
               <IonLabel className="ion-text-wrap">
                 <h2>
-                  {message.fromName}
+                  {measure.fromName}
                   <span className="date">
-                    <IonNote>{message.date}</IonNote>
+                    <IonNote>{measure.date}</IonNote>
                   </span>
                 </h2>
                 <h3>To: <IonNote>Me</IonNote></h3>
@@ -55,16 +55,16 @@ const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
             </IonItem>
 
             <div className="ion-padding">
-              <h1>{message.subject}</h1>
+              <h1>{measure.subject}</h1>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
             </div>
           </>
-        ) : <div>Message not found</div>}
+        ) : <div>Measure not found</div>}
       </IonContent>
     </IonPage>
   );
 };
 
-export default ViewMessage;
+export default ViewMeasure;
