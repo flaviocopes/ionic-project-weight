@@ -1,6 +1,6 @@
-import MessageListItem from '../components/MessageListItem';
-import React, { useState } from 'react';
-import { Message, getMessages } from '../data/messages';
+import MessageListItem from '../components/MessageListItem'
+import React, { useState } from 'react'
+import { Message, getMessages } from '../data/messages'
 import {
   IonContent,
   IonHeader,
@@ -10,51 +10,50 @@ import {
   IonRefresherContent,
   IonTitle,
   IonToolbar,
-  useIonViewWillEnter
-} from '@ionic/react';
-import './Home.css';
+  useIonViewWillEnter,
+} from '@ionic/react'
+import './Home.css'
 
 const Home: React.FC = () => {
-
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([])
 
   useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
-  });
+    const msgs = getMessages()
+    setMessages(msgs)
+  })
 
   const refresh = (e: CustomEvent) => {
     setTimeout(() => {
-      e.detail.complete();
-    }, 3000);
-  };
+      e.detail.complete()
+    }, 3000)
+  }
 
   return (
-    <IonPage id="home-page">
+    <IonPage id='home-page'>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Inbox</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
+        <IonRefresher slot='fixed' onIonRefresh={refresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
 
-        <IonHeader collapse="condense">
+        <IonHeader collapse='condense'>
           <IonToolbar>
-            <IonTitle size="large">
-              Inbox
-            </IonTitle>
+            <IonTitle size='large'>Inbox</IonTitle>
           </IonToolbar>
         </IonHeader>
 
         <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
+          {messages.map((m) => (
+            <MessageListItem key={m.id} message={m} setMessages={setMessages} messages={messages} />
+          ))}
         </IonList>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
